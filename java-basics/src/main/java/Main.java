@@ -17,12 +17,8 @@ public class Main {
             }
 
             if(args[0].equals("posts")) {
-                Retrofit retrofit = new Retrofit.Builder()
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .baseUrl("https://jsonplaceholder.typicode.com/")
-                        .build();
 
-                JSONPlaceholderAPI api = retrofit.create(JSONPlaceholderAPI.class);
+                JSONPlaceholderAPI api = JSONPlaceholderAPI.getInstance();
 
                 List<Post> posts;
                 try {
@@ -37,12 +33,9 @@ public class Main {
             }
 
             if(args[0].equals("photos")) {
-                Retrofit retrofit = new Retrofit.Builder()
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .baseUrl("https://jsonplaceholder.typicode.com/")
-                        .build();
 
-                JSONPlaceholderAPI api = retrofit.create(JSONPlaceholderAPI.class);
+                JSONPlaceholderAPI api = JSONPlaceholderAPI.getInstance();
+
 
                 List<Photo> photos;
                 try {
