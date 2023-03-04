@@ -103,7 +103,7 @@ public class  TasksController {
     ResponseEntity<ErrorResponse> handleErrors(DueDateException e){
         return new ResponseEntity<>(
                 new ErrorResponse((e.getMessage())),
-                HttpStatus.NOT_ACCEPTABLE
+                HttpStatus.NOT_FOUND
         );
     }
 }
