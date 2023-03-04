@@ -1,4 +1,4 @@
-package com.ooothla.springtaskmgr;
+package com.ooothla.springtaskmgr.entities;
 
 import java.util.Date;
 
