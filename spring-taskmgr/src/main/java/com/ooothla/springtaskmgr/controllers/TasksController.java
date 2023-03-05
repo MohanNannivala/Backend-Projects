@@ -91,19 +91,29 @@ public class  TasksController {
         ));
     }
 
-    @ExceptionHandler(TaskNotFoundException.class)
-    ResponseEntity<ErrorResponse> handleErrors(TaskNotFoundException e){
-        return new ResponseEntity<>(
-                new ErrorResponse(e.getMessage()),
-                HttpStatus.NOT_FOUND
-        );
-    }
+    @ExceptionHandler({
+            TaskNotFoundException.class,
+            DueDateException.class
+    })
+    ResponseEntity<ErrorResponse> handleErrors(Exception e){
 
-    @ExceptionHandler(DueDateException.class)
-    ResponseEntity<ErrorResponse> handleErrors(DueDateException e){
+        if(e instanceof TaskNotFoundException){
+            return new ResponseEntity<>(
+                    new ErrorResponse(e.getMessage()),
+                    HttpStatus.NOT_FOUND
+            );
+        }
+
+        if(e instanceof DueDateException){
+            return new ResponseEntity<>(
+                    new ErrorResponse((e.getMessage())),
+                    HttpStatus.NOT_FOUND
+            );
+        }
+
         return new ResponseEntity<>(
                 new ErrorResponse((e.getMessage())),
-                HttpStatus.NOT_FOUND
+                HttpStatus.INTERNAL_SERVER_ERROR
         );
     }
 }
