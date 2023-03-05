@@ -1,15 +1,17 @@
 package com.example.springtaskmgrv2.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 
 import java.util.Date;
-import java.util.List;
 
 
 @Entity(name = "tasks")
+@Getter
+@Setter
 public class TaskEntity extends BaseEntity{
 
     @Column(name = "title", nullable = false, length = 150)

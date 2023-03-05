@@ -15,6 +15,6 @@ public abstract class BaseEntity {
     private  Integer id;
 
     @CreatedDate
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date createdAt;
 }
