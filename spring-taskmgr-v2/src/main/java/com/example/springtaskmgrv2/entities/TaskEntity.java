@@ -1,7 +1,6 @@
 package com.example.springtaskmgrv2.entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,11 +9,10 @@ import java.util.Date;
 
 
 @Entity(name = "tasks")
-@Getter
-@Setter
+@Data
 public class TaskEntity extends BaseEntity{
 
-    @Column(name = "title", nullable = false, length = 150)
+    @Column(name = "title", nullable = false, length = 150, unique = true)
     String title;
 
     @Column(name = "description", nullable = true, length = 500)
@@ -25,6 +23,5 @@ public class TaskEntity extends BaseEntity{
 
     @Column(name = "due_date", nullable = true)
     Date dueDate;
-
 
 }
