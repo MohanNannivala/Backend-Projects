@@ -1,4 +1,4 @@
-package com.example.springtaskmgrv2.repositorie;
+package com.example.springtaskmgrv2.repository;
 
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 

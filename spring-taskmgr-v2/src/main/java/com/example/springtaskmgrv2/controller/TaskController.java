@@ -2,8 +2,8 @@ package com.example.springtaskmgrv2.controller;
 
 import com.example.springtaskmgrv2.dtos.CreateTaskDTO;
 import com.example.springtaskmgrv2.dtos.UpdateTaskDTO;
-import com.example.springtaskmgrv2.entitie.Status;
-import com.example.springtaskmgrv2.entitie.TaskEntity;
+import com.example.springtaskmgrv2.entity.Status;
+import com.example.springtaskmgrv2.entity.TaskEntity;
 import com.example.springtaskmgrv2.exception.DueDateIsBeforeCurrentDateException;
 import com.example.springtaskmgrv2.exception.TaskNotFoundException;
 import com.example.springtaskmgrv2.service.TaskService;

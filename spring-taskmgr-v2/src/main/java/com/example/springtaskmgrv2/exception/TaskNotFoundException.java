@@ -1,6 +1,6 @@
 package com.example.springtaskmgrv2.exception;
 
-import com.example.springtaskmgrv2.entitie.Status;
+import com.example.springtaskmgrv2.entity.Status;
 
 import java.util.List;
 

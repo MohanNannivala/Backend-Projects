@@ -1,7 +1,7 @@
-package com.example.springtaskmgrv2.repositorie;
+package com.example.springtaskmgrv2.repository;
 
-import com.example.springtaskmgrv2.entitie.Status;
-import com.example.springtaskmgrv2.entitie.TaskEntity;
+import com.example.springtaskmgrv2.entity.Status;
+import com.example.springtaskmgrv2.entity.TaskEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

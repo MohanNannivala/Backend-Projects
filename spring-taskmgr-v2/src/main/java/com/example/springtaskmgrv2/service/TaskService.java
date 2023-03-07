@@ -2,11 +2,11 @@ package com.example.springtaskmgrv2.service;
 
 import com.example.springtaskmgrv2.dtos.CreateTaskDTO;
 import com.example.springtaskmgrv2.dtos.UpdateTaskDTO;
-import com.example.springtaskmgrv2.entitie.Status;
-import com.example.springtaskmgrv2.entitie.TaskEntity;
+import com.example.springtaskmgrv2.entity.Status;
+import com.example.springtaskmgrv2.entity.TaskEntity;
 import com.example.springtaskmgrv2.exception.DueDateIsBeforeCurrentDateException;
 import com.example.springtaskmgrv2.exception.TaskNotFoundException;
-import com.example.springtaskmgrv2.repositorie.TaskRepository;
+import com.example.springtaskmgrv2.repository.TaskRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

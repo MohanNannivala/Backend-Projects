@@ -1,6 +1,6 @@
-package com.example.springtaskmgrv2.repositorie;
+package com.example.springtaskmgrv2.repository;
 
-import com.example.springtaskmgrv2.entitie.NoteEntity;
+import com.example.springtaskmgrv2.entity.NoteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NotesRepository extends JpaRepository<NoteEntity, Integer> {

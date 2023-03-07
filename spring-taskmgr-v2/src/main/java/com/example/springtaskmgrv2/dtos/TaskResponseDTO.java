@@ -1,7 +1,7 @@
 package com.example.springtaskmgrv2.dtos;
 
-import com.example.springtaskmgrv2.entitie.NoteEntity;
-import com.example.springtaskmgrv2.entitie.Status;
+import com.example.springtaskmgrv2.entity.NoteEntity;
+import com.example.springtaskmgrv2.entity.Status;
 import lombok.Getter;
 import lombok.Setter;
 

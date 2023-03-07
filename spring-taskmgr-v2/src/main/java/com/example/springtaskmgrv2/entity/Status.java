@@ -1,4 +1,4 @@
-package com.example.springtaskmgrv2.entitie;
+package com.example.springtaskmgrv2.entity;
 
 public enum Status {
     NOT_STARTED,
