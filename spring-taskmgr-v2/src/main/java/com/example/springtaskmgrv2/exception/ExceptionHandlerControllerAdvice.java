@@ -20,4 +20,9 @@ public class ExceptionHandlerControllerAdvice {
     public ResponseEntity<ErrorResponseDTO> handleDueDateIsBeforeCurrentDateException(Exception e){
         return new ResponseEntity<>(new ErrorResponseDTO(e.getMessage()), HttpStatus.UNPROCESSABLE_ENTITY);
     }
+
+    @ExceptionHandler(NotesNotFoundException.class)
+    public ResponseEntity<ErrorResponseDTO> noteNotFoundException(Exception e){
+        return new ResponseEntity<>(new ErrorResponseDTO(e.getMessage()), HttpStatus.NOT_FOUND);
+    }
 }

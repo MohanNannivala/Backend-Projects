@@ -18,5 +18,5 @@ public class TaskResponseDTO {
     private Data dueDate;
     private Status status;
     private Date createdAt;
-    private List<NoteEntity> notes;
+    private List<NoteResponseDTO> notes;
 }
