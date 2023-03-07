@@ -18,8 +18,8 @@ public class TaskEntity extends BaseEntity{
     @Column(name = "description", nullable = true, length = 500)
     String description;
 
-    @Column(name = "completed", nullable = false, columnDefinition = "boolean default false")
-    Boolean completed;
+    @Column(name = "completed", nullable = false)
+    Status status;
 
     @Column(name = "due_date", nullable = true)
     Date dueDate;

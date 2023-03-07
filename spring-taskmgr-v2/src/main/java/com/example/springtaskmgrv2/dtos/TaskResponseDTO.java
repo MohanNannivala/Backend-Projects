@@ -1,6 +1,7 @@
 package com.example.springtaskmgrv2.dtos;
 
 import com.example.springtaskmgrv2.entities.NoteEntity;
+import com.example.springtaskmgrv2.entities.Status;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,7 @@ public class TaskResponseDTO {
     private String title;
     private String description;
     private Data dueDate;
-    private boolean completed;
+    private Status status;
     private Date createdAt;
     private List<NoteEntity> notes;
 }

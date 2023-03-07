@@ -2,7 +2,9 @@ package com.example.springtaskmgrv2.controllers;
 
 import com.example.springtaskmgrv2.dtos.CreateTaskDTO;
 import com.example.springtaskmgrv2.dtos.UpdateTaskDTO;
+import com.example.springtaskmgrv2.entities.Status;
 import com.example.springtaskmgrv2.entities.TaskEntity;
+import com.example.springtaskmgrv2.exceptions.DueDateIsBeforeCurrentDateException;
 import com.example.springtaskmgrv2.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,11 +31,11 @@ public class TaskController {
     }
 
     @PostMapping("/tasks")
-    public ResponseEntity<TaskEntity> addTask(@RequestBody CreateTaskDTO createTaskDTO) throws ParseException {
+    public ResponseEntity<TaskEntity> addTask(@RequestBody CreateTaskDTO createTaskDTO) throws ParseException, DueDateIsBeforeCurrentDateException {
 
         TaskEntity task=taskService.addTask(createTaskDTO.getTitle(),
                             createTaskDTO.getDescription(),
-                            createTaskDTO.getCompleted(),
+                            createTaskDTO.getStatus(),
                             createTaskDTO.getDueDate()
                         );
 
@@ -41,11 +43,12 @@ public class TaskController {
     }
 
     @PatchMapping("/tasks/{id}")
-    public ResponseEntity<TaskEntity> updateTask(@PathVariable("id") Integer id, @RequestBody UpdateTaskDTO updateTaskDTO) throws ParseException {
+    public ResponseEntity<TaskEntity> updateTask(@PathVariable("id") Integer id, @RequestBody UpdateTaskDTO updateTaskDTO) throws ParseException, DueDateIsBeforeCurrentDateException {
+
         return ResponseEntity.accepted().body(taskService.updateTask(id,
                                     updateTaskDTO.getTitle(),
                                     updateTaskDTO.getDescription(),
-                                    updateTaskDTO.getCompleted(),
+                                    updateTaskDTO.getStatus(),
                                     updateTaskDTO.getDueDate()));
     }
 
@@ -54,13 +57,13 @@ public class TaskController {
         return ResponseEntity.accepted().body(taskService.deleteTask(id));
     }
 
-    @GetMapping("/tasks/{title}")
+    @GetMapping("/tasks/title")
     public ResponseEntity<List<TaskEntity>> getTaskByTitle(@RequestParam("title") List<String> title){
         return ResponseEntity.ok(taskService.getTaskByTitle(title));
     }
 
-    @GetMapping("/tasks/{isCompleted}")
-    public ResponseEntity<List<TaskEntity>> getTaskByCompleted(@RequestParam("isCompleted") boolean isCompleted){
-        return ResponseEntity.ok(taskService.getTaskByCompleted(isCompleted));
+    @GetMapping("/tasks/status")
+    public ResponseEntity<List<TaskEntity>> getTaskByCompleted(@RequestParam("status") Status status){
+        return ResponseEntity.ok(taskService.getTaskByCompleted(status));
     }
 }

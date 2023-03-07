@@ -1,5 +1,6 @@
 package com.example.springtaskmgrv2.dtos;
 
+import com.example.springtaskmgrv2.entities.Status;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,5 +10,5 @@ public class CreateTaskDTO {
     private String title;
     private String description;
     private String dueDate;
-    private Boolean completed;
+    private Status status;
 }

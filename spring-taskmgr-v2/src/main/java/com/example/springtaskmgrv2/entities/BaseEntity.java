@@ -2,7 +2,7 @@ package com.example.springtaskmgrv2.entities;
 
 import javax.persistence.*;
 import lombok.Getter;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
@@ -14,7 +14,7 @@ public abstract class BaseEntity {
     @Column(name = "id", nullable = false)
     private  Integer id;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(name = "created_at")
     private Date createdAt;
 }
