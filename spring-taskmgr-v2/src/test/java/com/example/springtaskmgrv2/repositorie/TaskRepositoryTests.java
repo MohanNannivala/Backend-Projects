@@ -1,7 +1,7 @@
-package com.example.springtaskmgrv2.repositories;
+package com.example.springtaskmgrv2.repositorie;
 
-import com.example.springtaskmgrv2.entities.Status;
-import com.example.springtaskmgrv2.entities.TaskEntity;
+import com.example.springtaskmgrv2.entitie.Status;
+import com.example.springtaskmgrv2.entitie.TaskEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

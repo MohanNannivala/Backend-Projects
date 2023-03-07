@@ -1,4 +1,4 @@
-package com.example.springtaskmgrv2.exceptions;
+package com.example.springtaskmgrv2.exception;
 
 public class DueDateIsBeforeCurrentDateException extends Exception{
     public DueDateIsBeforeCurrentDateException(){

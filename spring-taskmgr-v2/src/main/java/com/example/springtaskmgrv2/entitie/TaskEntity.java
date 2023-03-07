@@ -1,4 +1,4 @@
-package com.example.springtaskmgrv2.entities;
+package com.example.springtaskmgrv2.entitie;
 
 import lombok.Data;
 

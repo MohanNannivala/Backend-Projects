@@ -1,10 +1,10 @@
-package com.example.springtaskmgrv2.exceptions;
+package com.example.springtaskmgrv2.exception;
 
-import com.example.springtaskmgrv2.entities.Status;
+import com.example.springtaskmgrv2.entitie.Status;
 
 import java.util.List;
 
-public class TaskNotFoundException extends IllegalStateException{
+public class TaskNotFoundException extends Exception{
     public TaskNotFoundException(Integer id){
         super("Task with id "+id+" not found");
     }

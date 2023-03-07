@@ -1,8 +1,8 @@
-package com.example.springtaskmgrv2.controllers;
+package com.example.springtaskmgrv2.exception;
 
 import com.example.springtaskmgrv2.dtos.ErrorResponseDTO;
-import com.example.springtaskmgrv2.exceptions.DueDateIsBeforeCurrentDateException;
-import com.example.springtaskmgrv2.exceptions.TaskNotFoundException;
+import com.example.springtaskmgrv2.exception.DueDateIsBeforeCurrentDateException;
+import com.example.springtaskmgrv2.exception.TaskNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
