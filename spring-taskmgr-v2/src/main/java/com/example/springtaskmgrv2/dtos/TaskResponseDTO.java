@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 @Setter
@@ -15,6 +16,6 @@ public class TaskResponseDTO {
     private String description;
     private Data dueDate;
     private boolean completed;
-    private Data createdAt;
+    private Date createdAt;
     private List<NoteEntity> notes;
 }

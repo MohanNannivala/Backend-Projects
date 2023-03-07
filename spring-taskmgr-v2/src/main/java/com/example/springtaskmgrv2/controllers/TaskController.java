@@ -54,12 +54,12 @@ public class TaskController {
         return ResponseEntity.accepted().body(taskService.deleteTask(id));
     }
 
-    @GetMapping("/tasks/titleName")
+    @GetMapping("/tasks/{title}")
     public ResponseEntity<List<TaskEntity>> getTaskByTitle(@RequestParam("title") List<String> title){
         return ResponseEntity.ok(taskService.getTaskByTitle(title));
     }
 
-    @GetMapping("/tasks/completed")
+    @GetMapping("/tasks/{isCompleted}")
     public ResponseEntity<List<TaskEntity>> getTaskByCompleted(@RequestParam("isCompleted") boolean isCompleted){
         return ResponseEntity.ok(taskService.getTaskByCompleted(isCompleted));
     }

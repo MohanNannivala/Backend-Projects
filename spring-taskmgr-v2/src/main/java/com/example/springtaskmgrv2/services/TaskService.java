@@ -61,14 +61,14 @@ public class TaskService {
         }
 
         if(completed != false) {
-            task.setCompleted(completed);
+            task.setCompleted(true);
         }
 
         if(dueDate != null) {
             task.setDueDate(dueDateFormatter.parse(dueDate));
         }
 
-        return task;
+        return taskRepository.save(task);
     }
 
     public TaskEntity deleteTask(Integer id){
