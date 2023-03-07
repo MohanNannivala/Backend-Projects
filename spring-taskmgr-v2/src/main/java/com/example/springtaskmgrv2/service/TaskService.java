@@ -50,30 +50,14 @@ public class TaskService {
 
     public TaskEntity updateTask(Integer id, UpdateTaskDTO updateTaskDTO) throws ParseException, DueDateIsBeforeCurrentDateException, TaskNotFoundException {
 
-
-        TaskEntity task = getTaskById(id);
-
         if(dueDateFormatter.parse(updateTaskDTO.getDueDate()).compareTo(new Date()) < 0){
             throw new DueDateIsBeforeCurrentDateException();
         }
 
-        if(updateTaskDTO.getTitle() != null) {
-            task.setTitle(updateTaskDTO.getTitle());
-        }
+        TaskEntity task= modelMapper.map(updateTaskDTO, TaskEntity.class);
+        taskRepository.save(task);
 
-        if(updateTaskDTO.getDescription() != null) {
-            task.setDescription(updateTaskDTO.getDescription());
-        }
-
-        if(updateTaskDTO.getStatus() != null) {
-            task.setStatus(updateTaskDTO.getStatus());
-        }
-
-        if(updateTaskDTO.getDueDate() != null) {
-            task.setDueDate(dueDateFormatter.parse(updateTaskDTO.getDueDate()));
-        }
-
-        return taskRepository.save(task);
+        return task;
     }
 
     public TaskEntity deleteTask(Integer id) throws TaskNotFoundException {
@@ -82,20 +66,21 @@ public class TaskService {
         return  deletedTask;
     }
 
-    public List<TaskEntity> getTaskByTitle(List<String> title) throws TaskNotFoundException {
+    public List<TaskEntity> getTaskByTitle(List<String> titles) throws TaskNotFoundException {
 
         List<TaskEntity> tasks = new ArrayList<>();
         TaskEntity task;
 
-        for(int i=0; i<title.size(); i++){
-            task=taskRepository.findByTitle(title.get(i));
-            if(task!=null){
+        for (String s : titles) {
+            task = taskRepository.findByTitle(s);
+            if (task != null) {
+
                 tasks.add(task);
             }
         }
 
         if(tasks.isEmpty()){
-            throw new TaskNotFoundException(title);
+            throw new TaskNotFoundException(titles);
         }
 
         return tasks;

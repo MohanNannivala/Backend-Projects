@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UpdateTaskDTO {
+    private Integer id;
     private String title;
     private String description;
     private String dueDate;
