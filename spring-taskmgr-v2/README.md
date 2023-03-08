@@ -25,28 +25,28 @@
 
 ## API Endpoints
 
-### `POST /tasks`
+### `POST`:`/tasks`
 Create a new task
 
-### `GET /tasks`
+### `GET`:`/tasks`
 Get all tasks Available filters :
 - `/tasks/title?title=I am a task!`
 - `/tasks/status?status=COMPLETED/NOT_STARTED/WORK_IN_PROGRESS`
 
-### `GET /tasks/{task_id}`
+### `GET`:`/tasks/{task_id}`
 Get the details of a particular task including notes
 
-### `PATCH /tasks/{task_id}`
+### `PATCH`:`/tasks/{task_id}`
 Edit the details of a particular task.
 
-### `DELETE /tasks/{task_id}`
+### `DELETE`:`/tasks/{task_id}`
 Delete a particular task
 
-### `GET  /tasks/{task_id}/notes`
+### `GET`:`/tasks/{task_id}/notes`
 Fetch all the notes under a particular task
 
-### `POST  /tasks/{task_id}/notes`
+### `POST`:`/tasks/{task_id}/notes`
 Create a new note under the task with given task id
 
-### `DELETE /tasks/{task_id}/notes/{notes_id}`
+### `DELETE`:`/tasks/{task_id}/notes/{notes_id}`
 Delete a note
