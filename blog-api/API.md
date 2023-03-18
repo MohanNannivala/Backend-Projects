@@ -73,7 +73,7 @@ get all articles (default page size 10)
 available filters
 
 - `/articles?tag=stocks`
-- `/articles?author=arnavg`
+- `/articles?author=mohan`
 - `/articles?page=3&size=10`
 
 ### `GET /articles/{article-slug}`
