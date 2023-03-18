@@ -1,4 +1,4 @@
-# Blogginf App
+# Blogging App
 
 ## JSON Entities
 
