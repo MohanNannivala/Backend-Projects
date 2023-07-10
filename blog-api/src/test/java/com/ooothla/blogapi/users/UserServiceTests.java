@@ -1,6 +1,7 @@
 package com.ooothla.blogapi.users;
 
 
+import com.ooothla.blogapi.security.jwt.JWTService;
 import com.ooothla.blogapi.users.dto.CreateUserDTO;
 import com.ooothla.blogapi.users.dto.UserResponseDTO;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ public class UserServiceTests {
 
     private UserService getUserService(){
         if(userService == null){
-            userService = new UserService(userRepository, new ModelMapper(), new BCryptPasswordEncoder());
+            userService = new UserService(userRepository, new ModelMapper(), new BCryptPasswordEncoder(), new JWTService());
         }
         return userService;
     }

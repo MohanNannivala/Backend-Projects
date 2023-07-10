@@ -1,6 +1,7 @@
 package com.ooothla.blogapi.users;
 
 
+import com.ooothla.blogapi.security.jwt.JWTService;
 import com.ooothla.blogapi.users.exceptions.IncorrectPasswordException;
 import com.ooothla.blogapi.users.exceptions.UserNotFoundException;
 import com.ooothla.blogapi.users.dto.CreateUserDTO;
@@ -15,12 +16,14 @@ public class UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    private final JWTService jwtService;
 
 
-    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder){
+    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, JWTService jwtService){
         this.userRepository=userRepository;
         this.modelMapper=modelMapper;
         this.passwordEncoder=passwordEncoder;
+        this.jwtService = jwtService;
     }
 
     public UserResponseDTO createUser(CreateUserDTO createUserDTO) {
@@ -33,6 +36,7 @@ public class UserService {
         newUserEntity.setPassword(passwordEncoder.encode(newUserEntity.getPassword()));
         UserEntity savedUser = userRepository.save(newUserEntity);
         UserResponseDTO userResponseDTO = modelMapper.map(savedUser, UserResponseDTO.class);
+        userResponseDTO.setToken(jwtService.createJWT(savedUser.getId()));
         return userResponseDTO;
     }
 
@@ -51,6 +55,7 @@ public class UserService {
         }
 
         UserResponseDTO userResponseDTO = modelMapper.map(userEntity, UserResponseDTO.class);
+        userResponseDTO.setToken(jwtService.createJWT(userResponseDTO.getId()));
 
         return userResponseDTO;
     }
