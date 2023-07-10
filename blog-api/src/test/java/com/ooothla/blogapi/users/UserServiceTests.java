@@ -3,8 +3,11 @@ package com.ooothla.blogapi.users;
 
 import com.ooothla.blogapi.users.dto.CreateUserDTO;
 import com.ooothla.blogapi.users.dto.UserResponseDTO;
+import org.junit.jupiter.api.Test;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -12,14 +15,25 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class UserServiceTests {
 
     @Autowired
+    private UserRepository userRepository;
     private UserService userService;
 
+
+    private UserService getUserService(){
+        if(userService == null){
+            userService = new UserService(userRepository, new ModelMapper(), new BCryptPasswordEncoder());
+        }
+        return userService;
+    }
+
+
+    @Test
     public void testCreateUser(){
         CreateUserDTO newUserDto = new CreateUserDTO();
         newUserDto.setUserName("mohan");
         newUserDto.setEmail("mohan.nannivala.sajjan@gmail.com");
         newUserDto.setPassword("mohan@123");
-        UserResponseDTO userResponseDTO = userService.createUser(newUserDto);
+        UserResponseDTO userResponseDTO = getUserService().createUser(newUserDto);
         assertNotNull(userResponseDTO);
     }
 }

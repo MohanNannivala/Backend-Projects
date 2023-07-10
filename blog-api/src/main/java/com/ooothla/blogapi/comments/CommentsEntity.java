@@ -3,11 +3,13 @@ package com.ooothla.blogapi.comments;
 import com.ooothla.blogapi.articles.ArticleEntity;
 import com.ooothla.blogapi.commons.BaseEntity;
 import com.ooothla.blogapi.users.UserEntity;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+@Data
 @Entity(name = "comments")
 public class CommentsEntity extends BaseEntity {
 

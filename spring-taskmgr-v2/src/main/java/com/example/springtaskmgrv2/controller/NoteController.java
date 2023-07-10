@@ -3,7 +3,6 @@ package com.example.springtaskmgrv2.controller;
 import com.example.springtaskmgrv2.dtos.CreateNoteDTO;
 import com.example.springtaskmgrv2.dtos.NoteResponseDTO;
 import com.example.springtaskmgrv2.entity.NoteEntity;
-import com.example.springtaskmgrv2.entity.TaskEntity;
 import com.example.springtaskmgrv2.exception.NotesNotFoundException;
 import com.example.springtaskmgrv2.exception.TaskNotFoundException;
 import com.example.springtaskmgrv2.service.NoteService;
@@ -40,7 +39,6 @@ public class NoteController {
         NoteEntity note = noteService.addNotes(taskId, createNotesDTO);
         NoteResponseDTO noteResponse = modelMapper.map(note, NoteResponseDTO.class);
         return ResponseEntity.created(URI.create("/tasks/"+taskId+"/notes/"+note.getId())).body(noteResponse);
-
     }
 
     @DeleteMapping("/tasks/{id}/notes/{noteId}")

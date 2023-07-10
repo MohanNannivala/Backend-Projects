@@ -11,13 +11,11 @@ import java.net.URI;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
     public final UserService userService;
 
     public UserController(UserService userService){
         this.userService=userService;
     }
-
 
     @PostMapping("")
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody CreateUserDTO createUserDTO){
@@ -27,7 +25,7 @@ public class UserController {
                 .body(savedUser);
     }
 
-
+    @PostMapping("/login")
     public ResponseEntity<UserResponseDTO> loginUser(@RequestBody LoginUserDTO loginUserDTO){
         return ResponseEntity.ok(userService.loginUser(loginUserDTO));
     }

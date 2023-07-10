@@ -69,15 +69,14 @@ public class TaskService {
     public List<TaskEntity> getTaskByTitle(List<String> titles) throws TaskNotFoundException {
 
         List<TaskEntity> tasks = new ArrayList<>();
-        TaskEntity task;
 
-        for (String s : titles) {
-            task = taskRepository.findByTitle(s);
-            if (task != null) {
-
-                tasks.add(task);
-            }
-        }
+        titles.parallelStream().forEach(title -> {
+                    TaskEntity task = taskRepository.findByTitle(title);
+                    if (task != null) {
+                        tasks.add(task);
+                    }
+                }
+        );
 
         if(tasks.isEmpty()){
             throw new TaskNotFoundException(titles);
