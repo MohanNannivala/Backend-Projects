@@ -28,7 +28,6 @@ public class UserService {
 
     public UserResponseDTO createUser(CreateUserDTO createUserDTO) {
 
-        //TODO: Encrypt password
         //TODO: validate email
         //TODO: Check if username already exists
 

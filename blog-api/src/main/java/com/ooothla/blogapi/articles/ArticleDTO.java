@@ -1,5 +1,6 @@
 package com.ooothla.blogapi.articles;
 
+import com.ooothla.blogapi.users.UserEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
