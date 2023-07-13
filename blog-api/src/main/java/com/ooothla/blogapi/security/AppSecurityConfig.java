@@ -1,5 +1,7 @@
 package com.ooothla.blogapi.security;
 
+import com.ooothla.blogapi.security.authtokens.AuthTokenAuthenticationFilter;
+import com.ooothla.blogapi.security.authtokens.AuthTokenService;
 import com.ooothla.blogapi.security.jwt.JWTAuthenticationFilter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -10,8 +12,13 @@ import org.springframework.security.web.authentication.AnonymousAuthenticationFi
 
 
 @EnableWebSecurity
-@Configuration
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final AuthTokenService authTokenService;
+
+    public AppSecurityConfig(AuthTokenService authTokenService) {
+        this.authTokenService = authTokenService;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -24,6 +31,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
 
         http.addFilterBefore(new JWTAuthenticationFilter(), AnonymousAuthenticationFilter.class);
+        http.addFilterBefore(new AuthTokenAuthenticationFilter(authTokenService), AnonymousAuthenticationFilter.class);
     }
 
 }

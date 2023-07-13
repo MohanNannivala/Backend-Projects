@@ -1,6 +1,8 @@
 package com.ooothla.blogapi.users;
 
 
+import com.ooothla.blogapi.security.authtokens.AuthTokenRepository;
+import com.ooothla.blogapi.security.authtokens.AuthTokenService;
 import com.ooothla.blogapi.security.jwt.JWTService;
 import com.ooothla.blogapi.users.dto.CreateUserDTO;
 import com.ooothla.blogapi.users.dto.UserResponseDTO;
@@ -18,11 +20,12 @@ public class UserServiceTests {
     @Autowired
     private UserRepository userRepository;
     private UserService userService;
+    private AuthTokenService authTokenService;
 
 
     private UserService getUserService(){
         if(userService == null){
-            userService = new UserService(userRepository, new ModelMapper(), new BCryptPasswordEncoder(), new JWTService());
+            userService = new UserService(userRepository, new ModelMapper(), new BCryptPasswordEncoder(), new JWTService(), authTokenService);
         }
         return userService;
     }

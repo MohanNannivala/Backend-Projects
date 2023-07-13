@@ -1,5 +1,6 @@
 package com.ooothla.blogapi.users;
 
+import com.ooothla.blogapi.commons.AuthType;
 import com.ooothla.blogapi.users.dto.CreateUserDTO;
 import com.ooothla.blogapi.users.dto.LoginUserDTO;
 import com.ooothla.blogapi.users.dto.UserResponseDTO;
@@ -26,7 +27,14 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserResponseDTO> loginUser(@RequestBody LoginUserDTO loginUserDTO){
-        return ResponseEntity.ok(userService.loginUser(loginUserDTO));
+    public ResponseEntity<UserResponseDTO> loginUser(@RequestBody LoginUserDTO loginUserDTO, @RequestParam(required = false, value = "token") String token ){
+
+        AuthType authType = AuthType.JWT;
+
+        if(token!=null && token.equals("auth_token")){
+            authType = AuthType.AUTH_TOKEN;
+        }
+
+        return ResponseEntity.ok(userService.loginUser(loginUserDTO, authType));
     }
 }
